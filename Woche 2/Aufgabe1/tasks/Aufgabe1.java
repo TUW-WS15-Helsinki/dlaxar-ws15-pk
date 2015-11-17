@@ -24,9 +24,9 @@
     wie 'rec' (gleiches Input-Output-Verhalten), aber ohne Rekursion auskommt.
 
     Zusatzfragen:
-    1. Was berechnet 'rec'?
-    2. Warum ist es notwendig, negative Parameterwerte getrennt zu behandeln?
-    3. Wozu dient jede einzelne Fallunterscheidung?
+    1. Was berechnet 'rec'? - binomial coefficient
+    2. Warum ist es notwendig, negative Parameterwerte getrennt zu behandeln? - weil nur für n > k und n, k > 0 definiert
+    3. Wozu dient jede einzelne Fallunterscheidung? - thank you captain obvious
 */
 public class Aufgabe1 {
 
@@ -48,12 +48,39 @@ public class Aufgabe1 {
     }
 
     // Does the same as rec, but is not recursive.
-    private static int iter(int x, int y) {
-        return -1;  // Implementation is your task.
+    private static long iter(int x, int y) {
+        if(x < 0) {
+            x = -x;
+        }
+
+        if(y < 0) {
+            y = -y;
+        }
+
+        if(y > x) {
+            int t = x;
+            x = y;
+            y = t;
+        }
+
+
+        return fact(x) / ( fact(y)*fact(x-y) );  // Implementation is your task.
+    }
+
+    private static long fact(int a) {
+        long memo = a--;
+        for(; a > 1; a--) {
+            memo *= a;
+        }
+        return memo;
     }
 
     // Just for testing ...
     public static void main(String[] args) {
         // Den Rumpf dieser Methode können Sie beliebig verändern.
+        int n = 15;
+        int k = 4;
+        System.out.println(rec(k, n));
+        System.out.println(iter(k, n));
     }
 }

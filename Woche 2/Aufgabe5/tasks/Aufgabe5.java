@@ -20,10 +20,10 @@ public class Aufgabe5 {
     // Returns the sum of all elements with an index smaller than or equal to x in the array;
     // 0 is returned if the reference to the array equals null or x is not within the index range of the array.
     private static int sum(int[] array, int x) {
-        if (true /* TODO: modify expression;  array[x] is accessible */) {
-            return (0 /* TODO: modify expression */);
+        if (x == 0 /* TODO: modify expression;  array[x] is accessible */) {
+            return (array[x] /* TODO: modify expression */);
         }
-        return sum(array, (-1 /* TODO: modify expression*/)) + (-1 /* TODO: modify expression */);
+        return sum(array, (x-1 /* TODO: modify expression*/)) + (array[x] /* TODO: modify expression */);
     }
 
     // Returns the non-negative difference between the largest and smallest element in the two-dimensional array;
@@ -31,34 +31,34 @@ public class Aufgabe5 {
     private static int span(int[][] array) {
         boolean empty = true;
         int min = 0, max = 0;
-        if (true /* TODO: modify expression; array is null */) {
+        if (null == array /* TODO: modify expression; array is null */) {
             return -1;
         }
         for (int[] subarray : array) {
-            if (true /* TODO: modify expression; any part of the array is null */) {
+            if (null == subarray /* TODO: modify expression; any part of the array is null */) {
                 return -1;
             }
             for (int elem : subarray) {
                 if (empty) {
-                    min = max = (0 /* TODO: modify expression; first values */);
+                    min = max = (elem /* TODO: modify expression; first values */);
                     empty = false;
                 } else if (elem < min) {
-                    (max /* TODO: modify expression; first values */) = elem;
-                } else if (elem > max) {
                     (min /* TODO: modify expression; first values */) = elem;
+                } else if (elem > max) {
+                    (max /* TODO: modify expression; first values */) = elem;
                 }
             }
         }
-        return (-1 /* TODO: modify expression, the result */);
+        return (empty ? -1 : (max - min) /* TODO: modify expression, the result */);
     }
 
     // Fills the array with the first array.length prime numbers;
     // assumes that each array entry at an index below n is already correctly set.
     private static void primes(int[] array, int n) {
-        if (true /* TODO: modify expression; array exists (not null), but not all entries correctly set yet */) {
-            if (true /* TODO: modify expression; no array entry correctly set */) {
+        if (array != null && n != array.length  /* TODO: modify expression; array exists (not null), but not all entries correctly set yet */) {
+            if (n == 0 /* TODO: modify expression; no array entry correctly set */) {
                 array[0] = 2;
-                primes((null /* TODO: modify expression */), (-1 /* TODO: modify expression */));
+                primes((array /* TODO: modify expression */), (n+1 /* TODO: modify expression */));
             } else {
                 int check = array[n - 1];
                 boolean isPrime;
@@ -70,14 +70,14 @@ public class Aufgabe5 {
                     }
                 } while (! isPrime);
                 array[n] = check;
-                primes((null /* TODO: modify expression */), (-1 /* TODO: modify expression */));
+                primes((array /* TODO: modify expression */), (n+1 /* TODO: modify expression */));
             }
         }
     }
 
     // Returns an array containing the result of the division of x by y at index 0 and the remainder at index 1.
     private static int[] div(int x, int y) {
-        return (new int[]{ 0, 1 } /* TODO: modify expression */);
+        return (new int[]{ x/y, x%y } /* TODO: modify expression */);
     }
 
     // Prints the contents of array; just for testing, nothing to do.
@@ -100,5 +100,23 @@ public class Aufgabe5 {
     // Just for testing ...
     public static void main(String[] args) {
         // Den Rumpf dieser Methode können Sie beliebig verändern.
+        int a[] = new int[]{2, 3, 5, 1, 1, 0};
+        int x[][] = new int[][]{
+                new int[]{1, 3},
+                new int[]{}
+        };
+        System.out.println("sum");
+        System.out.println(sum(a, 5));
+
+        System.out.println("span");
+        System.out.println(span(x));
+
+        System.out.println("primes");
+        primes(a, 0);
+        printArray(a);
+
+
+        System.out.println("div");
+        printArray(div(3, 2));
     }
 }

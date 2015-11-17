@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /*
     Aufgabe4) Zweidimensionales Array
 
@@ -41,19 +43,56 @@
 public class Aufgabe4 {
 
     private static int fillArray(int[][] array) {
-        return -1;  // Implementation is your task.
+        int count = 0;
+        for(int i = 0; i < array.length; i++) {
+            for(int n = 0; n < array[i].length; n++) {
+                array[i][n] = count++;
+            }
+        }
+        return count;  // Implementation is your task.
     }
 
     private static int printArray(int[][] array) {
-        return -1;  // Implementation is your task.
+        for(int[] a : array) {
+            for(int x : a) {
+                System.out.print(x + ", ");
+            }
+            System.out.println();
+        }
+        return array.length;  // Implementation is your task.
     }
 
     private static void transpose(int[][] array) {
         // Implementation is your task.
+        for(int i = 0; i < array.length/2; i++) {
+            for(int n = i; n < array[i].length; n++) {
+                System.out.println(i + ", " + n);
+                int t = array[i][n];
+                array[i][n] = array[n][i];
+                array[n][i] = t;
+            }
+        }
+    }
+
+    private static int[][] generateTriangleArray(int length) {
+        int a[][] = new int[length][];
+        for(int i = 0; i < a.length; i++) {
+            a[i] = new int[length - i];
+        }
+        return a;
     }
 
     // Just for testing ...
     public static void main(String[] args) {
         // Den Rumpf dieser Methode können Sie beliebig verändern.
+
+        int x[][] = generateTriangleArray(7);
+
+        System.out.println(fillArray(x));
+        printArray(x);
+
+        transpose(x);
+        System.out.println();
+        printArray(x);
     }
 }

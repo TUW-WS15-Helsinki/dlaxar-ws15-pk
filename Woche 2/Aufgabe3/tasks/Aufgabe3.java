@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 /*
     Aufgabe3) Eindimensionales Array
 
@@ -42,8 +45,56 @@ public class Aufgabe3 {
 
     // Hier sollten die benötigten Methoden stehen.
 
+    public static double[] createArray(int length) {
+        double a[] = new double[length];
+        for(int i = 0; i < length; i++) {
+            a[i] = Math.random()*100;
+        }
+        return a;
+    }
+
+    public static void printArray(double a[], int n) {
+        int max = 100;
+        double sections[] = new double[n];
+        int count[] = new int[n];
+        for(int i = 0; i < n; ++i) {
+            sections[i] = (i+1)*(max/n);
+        }
+
+        for (double anA : a) {
+            for (int x = 0; x < count.length; ++x) {
+                if (anA < sections[x]) {
+                    ++count[x];
+                    break;
+                }
+            }
+        }
+
+        for (int aCount : count) {
+            System.out.println(aCount);
+        }
+    }
+
+    public static void diffArray(double a[]) {
+        double sumAvg = 0;
+        for(int i = 0; i < a.length; i++) {
+            sumAvg += a[i];
+        }
+
+        sumAvg /= a.length;
+
+        for(int i = 0; i < a.length; i++) {
+            a[i] = Math.abs(a[i] - sumAvg);
+        }
+    }
+
     // Just for testing ...
     public static void main(String[] args) {
         // Den Rumpf dieser Methode können Sie beliebig verändern.
+        double test[] = new double[]{1, 2, 3, 4, 5};
+        printArray(test, 4);
+
+        diffArray(test);
+        System.out.println(Arrays.toString(test));
     }
 }
