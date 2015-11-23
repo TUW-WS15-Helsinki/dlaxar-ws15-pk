@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /*
     Aufgabe2) Rekursion nachvollziehen
 
@@ -40,8 +42,8 @@
     Zusatzfragen:
     1. Wodurch kommt die große Anzahl der Zeilen im Protokoll zustande?
     2. Wie stark wirkt sich eine Änderung des ersten Arguments von 'rec' auf die Anzahl der Zeilen im Protokoll aus?
-       Wie viele Zeilen würde man z.B. mit 2, 6, 10 oder 15 statt 4 bekommen?
-    3. Wie viele Aufrufe von 'rec' sind maximal zur selben Zeit aktiv?
+       Wie viele Zeilen würde man z.B. mit 2, 6, 10 oder 15 statt 4 bekommen? a(n) = 3*2^n - 2
+    3. Wie viele Aufrufe von 'rec' sind maximal zur selben Zeit aktiv? n
     4. Durch welche einzelne Anweisung könnte man die vier Anweisungen in der bedingten Anweisung in 'rec' ersetzen,
        ohne die Semantik des Programms zu ändern?
 */
@@ -68,6 +70,15 @@ public class Aufgabe2 {
     // Just for testing ...
     public static void main(String[] args) {
         // Den Rumpf dieser Methode können Sie beliebig verändern.
-        rec(4, 0);
+        int x[] = new int[100];
+        for(int i = 0; i < 15; i++) {
+            x[i] = rec(i, 0);
+        }
+        System.out.println(Arrays.toString(x));
+//        rec(1, 0);
+//        rec(15, 0);
+//        rec(4, 0);
+//        rec(5, 0);
+//        rec(6, 0);
     }
 }
