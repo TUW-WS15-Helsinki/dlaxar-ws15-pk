@@ -39,7 +39,7 @@ class StringTree {
 
         @SuppressWarnings("Duplicates")
         void printLeaves() {
-            if(isLeave()) {
+            if(isLeaf()) {
                 System.out.println(this.elem);
             } else {
                 if(left != null) {
@@ -106,7 +106,7 @@ class StringTree {
             }
         }
 
-        boolean isLeave() {
+        boolean isLeaf() {
             return left == null && right == null;
         }
     }

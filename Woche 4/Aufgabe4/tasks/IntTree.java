@@ -53,7 +53,7 @@ class IntTree {
 
         @SuppressWarnings("Duplicates")
         void printLeaves() {
-            if(isLeave()) {
+            if(isLeaf()) {
                 System.out.println(this.elem);
             } else {
                 if(left != null) {
@@ -97,7 +97,7 @@ class IntTree {
             }
         }
 
-        boolean isLeave() {
+        boolean isLeaf() {
             return left == null && right == null;
         }
     }
