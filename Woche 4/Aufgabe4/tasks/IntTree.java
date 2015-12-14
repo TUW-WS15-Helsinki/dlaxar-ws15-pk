@@ -141,7 +141,7 @@ class IntTree {
         }
 
         public Set<Integer> getSet() {
-            Set<Integer> x = new TreeSet<>();
+            Set<Integer> x = new TreeSet<Integer>();
             x.add(this.elem);
             if(this.left != null) {
                 x.addAll(this.left.getSet());
