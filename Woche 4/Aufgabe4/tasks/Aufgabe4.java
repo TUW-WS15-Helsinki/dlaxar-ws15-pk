@@ -75,6 +75,14 @@ public class Aufgabe4 {
         myTree.printInOrderUpSub(4);
         System.out.println("InOrderDown******");
         myTree.printInOrderDown();
+        System.out.println("ElemSum******");
+        System.out.println(myTree.elemSum());
+        System.out.println(myTree.weightedSum());
+        System.out.println(null == null);
+        System.out.println(myTree.equals(myTree));
+        myTree.copyBalance();
+
+
 
 
     }
