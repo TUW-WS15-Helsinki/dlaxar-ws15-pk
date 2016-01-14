@@ -273,9 +273,6 @@ class IntTree {
         Integer[] x = (Integer[]) s.toArray(new Integer[0]);
         Arrays.sort(x);
 
-        System.out.println(x.length);
-
-        System.out.println(s.size());
         IntTree n = new IntTree();
 
         addFromTo(n, x, 0, x.length);
